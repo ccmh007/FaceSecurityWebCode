@@ -1,1 +1,2 @@
 # FaceRecognitionSystemSecurityDrillPlatform
+目前只写了前端代码和一个示例app.py。写后端应该要用到pycharm,可以下载教育版，要通过学生认证。这是csdn上安装学生版免费pycharm的教程https://blog.csdn.net/qq_46474804/article/details/136317486
