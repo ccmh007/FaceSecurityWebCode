@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI攻防靶场平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#dashboard" class="nav-link" id="dashboardLink">主控制台</a></li>
+            <li><a href="#targets" class="nav-link" id="targetsLink">攻击靶标</a></li>
+            <li><a href="#submit" class="nav-link" id="submitLink">成果提交</a></li>
+            <li><a href="#results" class="nav-link" id="resultsLink">成果查看</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+
+    <section id="dashboard">
+        <div class="dashboard-container">
+            <div class="summary-box">
+                <div class="summary-item">
+                    <h3>测试队伍</h3>
+                    <p>当前队员：演示队员</p>
+                </div>
+                <div class="summary-item">
+                    <h3>报告提交数量</h3>
+                    <p>2个</p>
+                </div>
+                <div class="summary-item">
+                    <h3>总计得分</h3>
+                    <p>200分</p>
+                </div>
+            </div>
+            <div class="ranking-container">
+                <h2>队伍排行榜</h2>
+                <div class="pagination-container">
+                    <button id="prevPage">上一页</button>
+                    <span id="currentPage">1</span>
+                    <button id="nextPage">下一页</button>
+                </div>
+                <table id="rankingTable">
+                    <thead>
+                        <tr>
+                            <th>名次</th>
+                            <th>队伍</th>
+                            <th>报告提交总数</th>
+                            <th>总计得分</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingBody">
+                        <!-- 这里通过JavaScript动态添加排行榜数据 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="targets" style="display: none;">
+        <div class="targets-container">
+            <div class="search-container">
+                <label for="searchInput">Search:</label>
+                <input type="text" id="searchInput">
+                <button id="searchButton">搜索</button>
+            </div>
+            <div class="pagination-container">
+                <label for="entriesSelect">Show</label>
+                <select id="entriesSelect">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                </select>
+                <span id="entriesInfo"></span>
+                <button id="prevPageTargets">上一页</button>
+                <span id="currentPageTargets">1</span>
+                <button id="nextPageTargets">下一页</button>
+            </div>
+            <table id="targetsTable">
+                <thead>
+                    <tr>
+                        <th>模型名称</th>
+                        <th>发布年份</th>
+                        <th>出处</th>
+                        <th>防御方式</th>
+                        <th>原理简介</th>
+                        <th>源码下载链接</th>
+                    </tr>
+                </thead>
+                <tbody id="targetsBody">
+                    <!-- 这里通过JavaScript动态添加靶标数据 -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="submit" style="display: none;">
+        <h2>成果提交</h2>
+        <form>
+            <div class="form-group">
+                <label for="target">攻击靶标</label>
+                <select id="target" required>
+                    <!-- 这里通过JavaScript动态添加靶标选项 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="report">成果报告文件</label>
+                <input type="file" id="report" required>
+            </div>
+            <button type="submit">提交</button>
+        </form>
+    </section>
+
+    <section id="results" style="display: none;">
+        <h2>成果查看</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>攻击单位</th>
+                    <th>审批状态</th>
+                    <th>得分</th>
+                    <th>提交人</th>
+                    <th>提交时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 这里通过JavaScript动态添加成果数据 -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

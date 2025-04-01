@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员页面</title>
+    <link rel="stylesheet" href="ad.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#userManagement" class="nav-link" id="userManagementLink">用户管理</a></li>
+            <li><a href="#targetManagement" class="nav-link" id="targetManagementLink">靶场管理</a></li>
+            <li><a href="#uploadApproval" class="nav-link" id="uploadApprovalLink">上传审批</a></li>
+            <li><a href="#dataStatistics" class="nav-link" id="dataStatisticsLink">数据统计</a></li>
+            <li><a href="#personal" class="nav-link" id="personalLink">个人信息</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <section id="userManagement">
+            <div class="user-management-container">
+                <h2>用户管理</h2>
+                <div class="search-container">
+                    <label for="userSearchInput">搜索用户：</label>
+                    <input type="text" id="userSearchInput">
+                    <button id="userSearchButton">搜索</button>
+                </div>
+                <div class="user-list-container">
+                    <table id="userTable">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>角色</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userBody">
+                            <!-- 这里通过 JavaScript 动态添加用户数据 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="targetManagement">
+            <div class="target-management-container">
+                <h2>靶场管理</h2>
+                <div class="search-container">
+                    <label for="targetSearchInput">搜索靶场：</label>
+                    <input type="text" id="targetSearchInput">
+                    <button id="targetSearchButton">搜索</button>
+                </div>
+                <div class="target-list-container">
+                    <table id="targetTable">
+                        <thead>
+                            <tr>
+                                <th>靶场名称</th>
+                                <th>创建者</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="targetBody">
+                            <!-- 这里通过 JavaScript 动态添加靶场数据 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="uploadApproval">
+            <div class="upload-approval-container">
+                <h2>上传审批</h2>
+                <div class="search-container">
+                    <label for="approvalSearchInput">搜索审批：</label>
+                    <input type="text" id="approvalSearchInput">
+                    <button id="approvalSearchButton">搜索</button>
+                </div>
+                <div class="approval-list-container">
+                    <table id="approvalTable">
+                        <thead>
+                            <tr>
+                                <th>提交者</th>
+                                <th>提交类型</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="approvalBody">
+                            <!-- 这里通过 JavaScript 动态添加审批数据 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="dataStatistics">
+            <div class="data-statistics-container">
+                <h2>数据统计</h2>
+                <div class="chart-container">
+                    <canvas id="userActivityChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="attackSuccessRateChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="modelUsageChart"></canvas>
+                </div>
+            </div>
+        </section>
+        <section id="personal">
+            <div class="personal-container">
+                <h2>个人信息</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">账号名称</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">头像</label>
+                        <input type="file" id="avatar">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduction">个人简介</label>
+                        <textarea id="introduction"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="text" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="qq">QQ</label>
+                        <input type="text" id="qq">
+                    </div>
+                    <div class="form-group">
+                        <label for="weixin">微信</label>
+                        <input type="text" id="weixin">
+                    </div>
+                    <button type="submit">保存</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="ad.js"></script>
+</body>
+</html>

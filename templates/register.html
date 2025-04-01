@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="register-wrapper">
+        <div class="register-box">
+            <h2>注册</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机号</label>
+                    <input type="text" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="sendCodeButton">获取验证码</button>
+                </div>
+                <div class="form-group">
+                    <label for="verificationCode">验证码</label>
+                    <input type="text" id="verificationCode" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="register.css"></script>
+</body>
+
+</html>

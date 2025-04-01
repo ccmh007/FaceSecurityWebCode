@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防御方界面</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#dashboard" class="nav-link" id="dashboardLink">主控制台</a></li>
+            <li><a href="#modelManagement" class="nav-link" id="modelManagementLink">模型管理</a></li>
+            <li><a href="#reportAnalysis" class="nav-link" id="reportAnalysisLink">报告分析</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+
+    <section id="dashboard">
+        <div class="dashboard-container">
+            <h2>主控制台</h2>
+            <div class="summary-box">
+                <div class="summary-item">
+                    <h3>当前防御模型状态</h3>
+                    <p>正常</p>
+                </div>
+                <div class="summary-item">
+                    <h3>攻击记录</h3>
+                    <p>2次</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modelManagement" style="display: none;">
+        <h2>模型管理</h2>
+        <form>
+            <div class="form-group">
+                <label for="modelFile">上传防御模型</label>
+                <input type="file" id="modelFile" required>
+            </div>
+            <button type="submit">上传</button>
+        </form>
+    </section>
+
+    <section id="reportAnalysis" style="display: none;">
+        <h2>报告分析</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>攻击方</th>
+                    <th>攻击时间</th>
+                    <th>攻击结果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 这里通过JavaScript动态添加攻击记录 -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

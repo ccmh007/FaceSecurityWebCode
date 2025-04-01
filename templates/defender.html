@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防御方页面</title>
+    <link rel="stylesheet" href="df.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#dashboard" class="nav-link" id="dashboardLink">主控制台</a></li>
+            <li><a href="#models" class="nav-link" id="modelsLink">我的模型</a></li>
+            <li><a href="#attacks" class="nav-link" id="attacksLink">查看攻击</a></li>
+            <li><a href="#test" class="nav-link" id="testLink">模型测试</a></li>
+            <li><a href="#personal" class="nav-link" id="personalLink">个人信息</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <section id="dashboard">
+            <div class="dashboard-container">
+                <h2>主控制台</h2>
+                <p>欢迎来到防御方主控制台，你可以在这里查看和管理相关信息。</p>
+            </div>
+        </section>
+        <section id="models">
+            <div class="models-container">
+                <h2>我的模型</h2>
+                <div class="search-container">
+                    <label for="modelSearchInput">搜索模型：</label>
+                    <input type="text" id="modelSearchInput">
+                    <button id="modelSearchButton">搜索</button>
+                </div>
+                <div class="model-list-container">
+                    <table id="modelTable">
+                        <thead>
+                            <tr>
+                                <th>模型名称</th>
+                                <th>作者</th>
+                                <th>发布年份</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modelBody">
+                            <!-- 这里通过 JavaScript 动态添加模型数据 -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="model-upload-container">
+                    <h3>上传新模型</h3>
+                    <form id="modelUploadForm">
+                        <div class="form-group">
+                            <label for="modelName">模型名称</label>
+                            <input type="text" id="modelName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelAuthor">作者</label>
+                            <input type="text" id="modelAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelYear">发布年份</label>
+                            <input type="number" id="modelYear" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelDescription">模型描述</label>
+                            <textarea id="modelDescription"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelFile">模型文件</label>
+                            <input type="file" id="modelFile" required>
+                        </div>
+                        <button type="submit">上传</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="attacks">
+            <div class="attacks-container">
+                <h2>查看攻击</h2>
+                <div class="search-container">
+                    <label for="attackSearchInput">搜索攻击：</label>
+                    <input type="text" id="attackSearchInput">
+                    <button id="attackSearchButton">搜索</button>
+                </div>
+                <div class="attack-list-container">
+                    <table id="attackTable">
+                        <thead>
+                            <tr>
+                                <th>攻击方式</th>
+                                <th>受攻击模型</th>
+                                <th>误判率</th>
+                                <th>平均误判率</th>
+                                <th>攻击者联系方式</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attackBody">
+                            <!-- 这里通过 JavaScript 动态添加攻击数据 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="test">
+            <div class="test-container">
+                <h2>模型测试</h2>
+                <form id="testForm">
+                    <div class="form-group">
+                        <label for="testModel">选择测试模型</label>
+                        <select id="testModel" required>
+                            <!-- 这里通过 JavaScript 动态添加测试模型选项 -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="testAttackMethod">选择攻击方法</label>
+                        <select id="testAttackMethod" required>
+                            <!-- 这里通过 JavaScript 动态添加攻击方法选项 -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="testResult">测试结果</label>
+                        <input type="text" id="testResult" readonly>
+                    </div>
+                    <button type="submit">开始测试</button>
+                </form>
+            </div>
+        </section>
+        <section id="personal">
+            <div class="personal-container">
+                <h2>个人信息</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">账号名称</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">头像</label>
+                        <input type="file" id="avatar">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduction">个人简介</label>
+                        <textarea id="introduction"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="text" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="qq">QQ</label>
+                        <input type="text" id="qq">
+                    </div>
+                    <div class="form-group">
+                        <label for="weixin">微信</label>
+                        <input type="text" id="weixin">
+                    </div>
+                    <button type="submit">保存</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="df.js"></script>
+</body>
+</html>

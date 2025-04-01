@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>攻击方页面</title>
+    <link rel="stylesheet" href="at.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#dashboard" class="nav-link" id="dashboardLink">主控制台</a></li>
+            <li><a href="#targets" class="nav-link" id="targetsLink">靶场查看</a></li>
+            <li><a href="#submit" class="nav-link" id="submitLink">成果提交</a></li>
+            <li><a href="#results" class="nav-link" id="resultsLink">成果查看</a></li>
+            <li><a href="#personal" class="nav-link" id="personalLink">个人信息</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <section id="dashboard" style="display: none;">
+            <div class="dashboard-container">
+                <div class="search-container">
+                    <label for="modelSearchInput">按模型搜索：</label>
+                    <input type="text" id="modelSearchInput">
+                    <button id="modelSearchButton">搜索</button>
+                </div>
+                <table id="attackHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>攻击方式</th>
+                            <th>模型误判率</th>
+                            <th>攻击者联系方式</th>
+                            <th>攻击者简介</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attackHistoryBody">
+                        <!-- 这里通过 JavaScript 动态添加攻击历史记录数据 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="targets" style="display: none;">
+            <div class="targets-container">
+                <div class="search-container">
+                    <label for="searchInput">Search:</label>
+                    <input type="text" id="searchInput">
+                    <button id="searchButton">搜索</button>
+                </div>
+                <table id="targetsTable">
+                    <thead>
+                        <tr>
+                            <th>模型名称</th>
+                            <th>作者信息与联系方式</th>
+                            <th>发布年份</th>
+                            <th>出处</th>
+                            <th>防御方式</th>
+                            <th>原理简介</th>
+                            <th>源码下载链接</th>
+                        </tr>
+                    </thead>
+                    <tbody id="targetsBody">
+                        <!-- 这里通过 JavaScript 动态添加靶标数据 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="submit" style="display: none;">
+            <div class="submit-container">
+                <h2>成果提交</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="target">攻击靶标</label>
+                        <select id="target" required>
+                            <!-- 这里通过 JavaScript 动态添加靶标选项 -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report">成果报告文件</label>
+                        <input type="file" id="report" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interfaceUrl">攻击方法接口 URL</label>
+                        <input type="text" id="interfaceUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFormat">输入格式</label>
+                        <textarea id="inputFormat" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="outputFormat">输出格式</label>
+                        <textarea id="outputFormat" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">描述</label>
+                        <textarea id="description"></textarea>
+                    </div>
+                    <button type="submit">提交</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="results" style="display: none;">
+            <div class="results-container">
+                <h2>成果查看</h2>
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>攻击方式</th>
+                            <th>攻击结果（模型误判率）</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- 这里通过 JavaScript 动态添加成果数据 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="personal" style="display: none;">
+            <div class="personal-container">
+                <h2>个人信息</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">账号名称</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">头像</label>
+                        <input type="file" id="avatar">
+                    </div>
+                    <div class="form-group">
+                        <label for="introduction">个人简介</label>
+                        <textarea id="introduction"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="text" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="qq">QQ</label>
+                        <input type="text" id="qq">
+                    </div>
+                    <div class="form-group">
+                        <label for="weixin">微信</label>
+                        <input type="text" id="weixin">
+                    </div>
+                    <button type="submit">保存</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="at.js"></script>
+</body>
+
+</html>

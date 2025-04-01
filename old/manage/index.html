@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员界面</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#userManagement" class="nav-link" id="userManagementLink">用户管理</a></li>
+            <li><a href="#targetManagement" class="nav-link" id="targetManagementLink">靶标管理</a></li>
+            <li><a href="#reportReview" class="nav-link" id="reportReviewLink">报告审核</a></li>
+            <li><a href="#" id="logout">退出登陆</a></li>
+        </ul>
+    </nav>
+
+    <section id="userManagement">
+        <h2>用户管理</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>角色</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 这里通过JavaScript动态添加用户数据 -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="targetManagement" style="display: none;">
+        <h2>靶标管理</h2>
+        <form>
+            <div class="form-group">
+                <label for="targetName">靶标名称</label>
+                <input type="text" id="targetName" required>
+            </div>
+            <div class="form-group">
+                <label for="targetDescription">原理简介</label>
+                <textarea id="targetDescription" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="targetFile">上传源码文件</label>
+                <input type="file" id="targetFile" required>
+            </div>
+            <button type="submit">添加靶标</button>
+        </form>
+    </section>
+
+    <section id="reportReview" style="display: none;">
+        <h2>报告审核</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>报告名称</th>
+                    <th>提交人</th>
+                    <th>提交时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 这里通过JavaScript动态添加报告数据 -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
