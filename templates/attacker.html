@@ -1,169 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>攻击方页面</title>
+    <title>攻击方控制台 | 智能对抗平台</title>
+    <!-- 现代字体 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 自定义样式 -->
     <link rel="stylesheet" href="at.css">
 </head>
-
 <body>
-    <nav>
-        <ul>
-            <li><a href="#dashboard" class="nav-link" id="dashboardLink">主控制台</a></li>
-            <li><a href="#targets" class="nav-link" id="targetsLink">靶场查看</a></li>
-            <li><a href="#submit" class="nav-link" id="submitLink">成果提交</a></li>
-            <li><a href="#results" class="nav-link" id="resultsLink">成果查看</a></li>
-            <li><a href="#personal" class="nav-link" id="personalLink">个人信息</a></li>
-            <li><a href="#" id="logout">退出登陆</a></li>
+    <!-- 侧边导航 -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="logo">攻击平台</h3>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#dashboard" class="nav-link active" data-section="dashboard">
+                <i class="fas fa-home"></i> 主控制台
+            </a></li>
+            <li><a href="#targets" class="nav-link" data-section="targets">
+                <i class="fas fa-shield-alt"></i> 靶场查看
+            </a></li>
+            <li><a href="#submit" class="nav-link" data-section="submit">
+                <i class="fas fa-upload"></i> 成果提交
+            </a></li>
+            <li><a href="#results" class="nav-link" data-section="results">
+                <i class="fas fa-chart-bar"></i> 成果查看
+            </a></li>
+            <li><a href="#personal" class="nav-link" data-section="personal">
+                <i class="fas fa-user"></i> 个人信息
+            </a></li>
+            <li><a href="#" id="logout" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i> 退出登录
+            </a></li>
         </ul>
     </nav>
-    <div class="main-content">
-        <section id="dashboard" style="display: none;">
-            <div class="dashboard-container">
-                <div class="search-container">
-                    <label for="modelSearchInput">按模型搜索：</label>
-                    <input type="text" id="modelSearchInput">
-                    <button id="modelSearchButton">搜索</button>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 主控制台 -->
+        <section id="dashboard" class="section active">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> 攻击任务概览</h2>
+            </div>
+            <div class="card">
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索攻击方法/模型..." id="searchInput">
+                    <button class="search-btn">搜索</button>
                 </div>
-                <table id="attackHistoryTable">
-                    <thead>
-                        <tr>
-                            <th>攻击方式</th>
-                            <th>模型误判率</th>
-                            <th>攻击者联系方式</th>
-                            <th>攻击者简介</th>
-                        </tr>
-                    </thead>
-                    <tbody id="attackHistoryBody">
-                        <!-- 这里通过 JavaScript 动态添加攻击历史记录数据 -->
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>攻击方式</th>
+                                <th>目标模型</th>
+                                <th>误判率</th>
+                                <th>提交时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskList">
+                            <tr><td>FGSM攻击</td><td>ResNet-50</td><td>32.7%</td><td>2024-08-15 14:23</td></tr>
+                            <tr><td>PGD攻击</td><td>YOLOv8</td><td>41.2%</td><td>2024-08-14 09:15</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section id="targets" style="display: none;">
-            <div class="targets-container">
-                <div class="search-container">
-                    <label for="searchInput">Search:</label>
-                    <input type="text" id="searchInput">
-                    <button id="searchButton">搜索</button>
+        <!-- 靶场查看 -->
+        <section id="targets" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-shield-alt"></i> 可选靶场列表</h2>
+            </div>
+            <div class="card">
+                <div class="filter-group">
+                    <select id="targetTypeFilter">
+                        <option value="all">所有类型</option>
+                        <option value="image">图像识别</option>
+                        <option value="nlp">自然语言</option>
+                        <option value="video">视频检测</option>
+                    </select>
+                    <button class="filter-btn">筛选</button>
                 </div>
-                <table id="targetsTable">
-                    <thead>
-                        <tr>
-                            <th>模型名称</th>
-                            <th>作者信息与联系方式</th>
-                            <th>发布年份</th>
-                            <th>出处</th>
-                            <th>防御方式</th>
-                            <th>原理简介</th>
-                            <th>源码下载链接</th>
-                        </tr>
-                    </thead>
-                    <tbody id="targetsBody">
-                        <!-- 这里通过 JavaScript 动态添加靶标数据 -->
-                    </tbody>
-                </table>
+                <div class="target-cards">
+                    <div class="target-card">
+                        <h3 class="card-title">图像分类靶场</h3>
+                        <p class="card-desc">支持FGSM、PGD等攻击方法，实时统计误判率</p>
+                        <div class="card-meta">
+                            <span>难度：★★★☆☆</span>
+                            <span>剩余次数：12/15</span>
+                        </div>
+                        <button class="select-btn">选择攻击</button>
+                    </div>
+                    <div class="target-card">
+                        <h3 class="card-title">NLP文本靶场</h3>
+                        <p class="card-desc">支持对抗样本生成，提供语义相似度验证</p>
+                        <div class="card-meta">
+                            <span>难度：★★★★☆</span>
+                            <span>剩余次数：0/5</span>
+                        </div>
+                        <button class="select-btn" disabled>次数已用完</button>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="submit" style="display: none;">
-            <div class="submit-container">
-                <h2>成果提交</h2>
-                <form>
+        <!-- 成果提交 -->
+        <section id="submit" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-upload"></i> 攻击成果提交</h2>
+            </div>
+            <div class="card">
+                <form id="submitForm" class="submit-form">
                     <div class="form-group">
-                        <label for="target">攻击靶标</label>
-                        <select id="target" required>
-                            <!-- 这里通过 JavaScript 动态添加靶标选项 -->
+                        <label for="attackMethod">攻击类型</label>
+                        <select id="attackMethod" required>
+                            <option value="">请选择</option>
+                            <option value="fgsm">FGSM</option>
+                            <option value="pgd">PGD</option>
+                            <option value="cwl2">C&W L2</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="report">成果报告文件</label>
-                        <input type="file" id="report" required>
+                        <label for="targetModel">目标模型</label>
+                        <input type="text" id="targetModel" placeholder="如：ResNet-50" required>
                     </div>
                     <div class="form-group">
-                        <label for="interfaceUrl">攻击方法接口 URL</label>
-                        <input type="text" id="interfaceUrl" required>
+                        <label for="attackFile">上传样本（zip）</label>
+                        <input type="file" id="attackFile" accept=".zip" required>
                     </div>
                     <div class="form-group">
-                        <label for="inputFormat">输入格式</label>
-                        <textarea id="inputFormat" required></textarea>
+                        <label for="description">攻击描述</label>
+                        <textarea id="description" rows="4" placeholder="请描述攻击步骤..." required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="outputFormat">输出格式</label>
-                        <textarea id="outputFormat" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">描述</label>
-                        <textarea id="description"></textarea>
-                    </div>
-                    <button type="submit">提交</button>
+                    <button type="submit" class="submit-btn">提交成果</button>
                 </form>
             </div>
         </section>
 
-        <section id="results" style="display: none;">
-            <div class="results-container">
-                <h2>成果查看</h2>
-                <table id="resultsTable">
-                    <thead>
-                        <tr>
-                            <th>攻击方式</th>
-                            <th>攻击结果（模型误判率）</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultsBody">
-                        <!-- 这里通过 JavaScript 动态添加成果数据 -->
-                    </tbody>
-                </table>
+        <!-- 成果查看 -->
+        <section id="results" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> 历史成果查看</h2>
+            </div>
+            <div class="card">
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <h4>总攻击次数</h4>
+                        <p class="stat-value">23</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>最高误判率</h4>
+                        <p class="stat-value">48.6%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>平均误判率</h4>
+                        <p class="stat-value">35.2%</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>提交时间</th>
+                                <th>攻击类型</th>
+                                <th>目标模型</th>
+                                <th>审核状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsList">
+                            <tr><td>2024-08-15 14:23</td><td>FGSM</td><td>ResNet-50</td><td><span class="status approved">已通过</span></td></tr>
+                            <tr><td>2024-08-14 09:15</td><td>PGD</td><td>YOLOv8</td><td><span class="status pending">审核中</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section id="personal" style="display: none;">
-            <div class="personal-container">
-                <h2>个人信息</h2>
-                <form>
+        <!-- 个人信息 -->
+        <section id="personal" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-user"></i> 个人信息设置</h2>
+            </div>
+            <div class="card">
+                <form id="profileForm" class="profile-form">
                     <div class="form-group">
-                        <label for="username">账号名称</label>
-                        <input type="text" id="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">密码</label>
-                        <input type="password" id="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="avatar">头像</label>
-                        <input type="file" id="avatar">
-                    </div>
-                    <div class="form-group">
-                        <label for="introduction">个人简介</label>
-                        <textarea id="introduction"></textarea>
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" value="攻击手-007" disabled>
                     </div>
                     <div class="form-group">
                         <label for="email">邮箱</label>
-                        <input type="text" id="email">
+                        <input type="email" id="email" value="attacker007@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">电话</label>
-                        <input type="text" id="phone">
+                        <label for="phone">联系电话</label>
+                        <input type="tel" id="phone" value="138-1234-5678" required>
                     </div>
                     <div class="form-group">
-                        <label for="qq">QQ</label>
-                        <input type="text" id="qq">
+                        <label for="bio">个人简介</label>
+                        <textarea id="bio" rows="3">专注对抗样本生成，擅长图像领域攻击</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="weixin">微信</label>
-                        <input type="text" id="weixin">
-                    </div>
-                    <button type="submit">保存</button>
+                    <button type="submit" class="save-btn">保存修改</button>
                 </form>
             </div>
         </section>
-    </div>
+    </main>
 
     <script src="at.js"></script>
 </body>
-
 </html>
